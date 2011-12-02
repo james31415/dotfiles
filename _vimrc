@@ -65,7 +65,7 @@ nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gci :Gcommit<cr>
 nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gr :Gremove<cr>
-nnoremap <leader>gp :Git push origin master
+nnoremap <leader>gp :Git push origin master<cr>
 
 augroup ft_fugitive
     au!
