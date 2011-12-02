@@ -2,6 +2,12 @@
 call pathogen#infect()
 "}}}
 
+let mapleader=","
+
+" Paths etc. {{{
+source ~/settings.vim
+"}}}
+
 " Options {{{
 " Graphical settings {{{
 colorscheme pablo
@@ -43,6 +49,7 @@ endif
 "}}}
 "}}}
 
+" Mappings {{{
 " Shell {{{
 function! s:ExecuteInShell(command) " {{{
     let command = join(map(split(a:command), 'expand(v:val)'))
@@ -62,15 +69,11 @@ command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 nnoremap <leader>! :Shell 
 "}}}
 
-" Mappings {{{
-let mapleader=","
-
 nnoremap <space> @@
 inoremap jk <Esc>
 
 " Special Files {{{
 nnoremap <Leader>ev :e $MYVIMRC<cr>
-nnoremap <Leader>ef :e D:\Owner\Music\Audio Files\Podcasts\feeds.list<cr>
 "}}}
 
 " Fugitive {{{
