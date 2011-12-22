@@ -62,7 +62,7 @@ nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gci :Gcommit<cr>
+nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gr :Gremove<cr>
 nnoremap <leader>gp :Git push origin master<cr>
