@@ -4,22 +4,17 @@ call pathogen#infect()
 
 let mapleader=","
 
-" Paths etc. {{{
-source ~/settings.vim
-"}}}
-
 " Options {{{
 " Graphical settings {{{
-colorscheme pablo
-set guifont=Bitstream_Vera_Sans_Mono:h12
-set statusline=%<%f\ %y\ %h%m%r%=%-14.(%l,%c%V%)\ %P\ %{fugitive#statusline()}
+colorscheme evening
+set guifont=Bitstream_Vera_Sans_Mono:h10
+set statusline=%<[%n]\ %f\ %y%h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set guioptions-=T
 set guioptions-=m
-"}}}
-
-" Options for folding {{{
-set foldmethod=marker
-set foldlevel=99
+set number
+hi StatusLine ctermfg=Yellow ctermbg=Blue
+hi ColorColumn ctermbg=DarkRed guibg=DarkRed
+call matchadd("ColorColumn", '\%81v', 100)
 "}}}
 
 " Filetype detection {{{
@@ -37,24 +32,27 @@ set grepprg=grep\ -n
 
 " Miscellaneous {{{
 set incsearch
-set ignorecase
 set laststatus=2
 set backspace=2
 set confirm
 set wildmenu
-
-if ($OS =~ "Windows")
-    let g:netrw_scp_cmd="pscp -q"
-endif
+set hidden
 "}}}
+
+" Tabs {{{
+set tabstop=4
+set shiftwidth=4
+set expandtab
 "}}}
 
 " Mappings {{{
+nnoremap <silent> <Leader>cd :cd %:p:h<cr>
 nnoremap <space> @@
 inoremap jk <Esc>
 
 " Special Files {{{
 nnoremap <Leader>ev :e $MYVIMRC<cr>
+nnoremap <silent> gf :e <cfile><cr>
 "}}}
 
 " Fugitive {{{
@@ -93,12 +91,12 @@ nnoremap <Leader>M <C-W>_
 " Buffer navigation {{{
 nnoremap <Tab> :bn<cr>
 nnoremap <S-Tab> :bp<cr>
+
+vnoremap <silent> <Leader>s y/<C-R>"<cr>
+vnoremap <silent> <Leader>S y:%s/<C-R>"//n<cr>
 "}}}
 
 " Function Key definitions {{{
-nnoremap <silent> <F6> :TlistToggle<cr>
-nnoremap <silent> <F7> :set hls!<cr>
-nnoremap <silent> <F8> :set nu!<cr>
 nnoremap <silent> <C-F2> :if &guioptions =~# 'T' <Bar>
                          \set guioptions-=T <Bar>
                          \set guioptions-=m <Bar>
@@ -106,6 +104,12 @@ nnoremap <silent> <C-F2> :if &guioptions =~# 'T' <Bar>
                          \set guioptions+=T <Bar>
                          \set guioptions+=m <Bar>
                     \endif<cr>
+nnoremap <silent> <F4> :UB<cr>
+nnoremap <silent> <F5> :e<cr>
+nnoremap <silent> <C-F5> :e<cr>G
+nnoremap <silent> <F6> :TlistToggle<cr>
+nnoremap <silent> <F7> :set hls!<cr>
+nnoremap <silent> <F8> :set nu!<cr>
 nnoremap <silent> <F12> :e #<cr>
 "}}}
 "}}}
@@ -116,10 +120,22 @@ function! Eatchar(pat)
 	return (c =~ a:pat) ? '' : c
 endfunction
 
+" Filetype: C,CPP {{{
+augroup filetype_c
+    autocmd!
+    autocmd FileType c,cpp let g:headerguard_newline=1
+    autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>g :HeaderguardAdd<cr>
+    autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>c Iclass <Esc>o{<cr>};<Esc>ko
+    autocmd FileType c,cpp inoremap <buffer> <silent> <C-B> <cr>{<cr>}<cr><Esc>kO
+    autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>es :exe "e " . expand("%:r") . ".cpp"<cr>
+    autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>eh :exe "e " . expand("%:r") . ".h"<cr>
+augroup END
+"}}}
+
 " Filetype: Python {{{
 augroup filetype_python
     autocmd!
-    autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab foldmethod=indent
+    autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab foldmethod=indent
     autocmd FileType python iabbrev <buffer> iff if:<left>
     autocmd FileType python iabbrev <buffer> eli elif:<left>
     autocmd FileType python iabbrev <buffer> imp import
@@ -133,9 +149,9 @@ augroup END
 augroup filetype_vim
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    autocmd FileType vim setlocal tabstop=4 shiftwidth=4 expandtab
     autocmd FileType vim setlocal foldmethod=marker
     autocmd FileType vim let b:surround_34 = "\"{{{ \r \"}}}"
 augroup END
 "}}}
 "}}}
-
