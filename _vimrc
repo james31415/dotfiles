@@ -37,6 +37,14 @@ set backspace=2
 set confirm
 set wildmenu
 set hidden
+
+if &encoding ==# 'latin1' && has('gui_running')
+    set encoding=utf-8
+endif
+
+if &history < 1000
+    set history=1000
+endif
 "}}}
 
 " Tabs {{{
