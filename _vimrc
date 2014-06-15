@@ -37,6 +37,14 @@ set backspace=2
 set confirm
 set wildmenu
 set hidden
+
+if &encoding ==# 'latin1' && has('gui_running')
+    set encoding=utf-8
+endif
+
+if &history < 1000
+    set history=1000
+endif
 "}}}
 
 " Tabs {{{
@@ -63,7 +71,6 @@ nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gr :Gremove<cr>
-nnoremap <leader>gp :Git push origin master<cr>
 
 augroup ft_fugitive
     au!
