@@ -31,6 +31,7 @@ set grepprg=grep\ -n
 "}}}
 
 " Miscellaneous {{{
+set nowrap
 set incsearch
 set laststatus=2
 set backspace=2
