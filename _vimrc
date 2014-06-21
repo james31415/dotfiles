@@ -143,13 +143,11 @@ augroup END
 " Filetype: Python {{{
 augroup filetype_python
     autocmd!
-    autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab foldmethod=indent
+    autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab foldmethod=indent
     autocmd FileType python iabbrev <buffer> iff if:<left>
     autocmd FileType python iabbrev <buffer> eli elif:<left>
     autocmd FileType python iabbrev <buffer> imp import
     autocmd FileType python iabbrev <buffer> ret return()<left><c-r>=Eatchar('\s')<cr>
-    autocmd FileType python iabbrev <buffer> return Use ret instead.
-    autocmd FileType python iabbrev <buffer> if Use iff instead.
 augroup END
 "}}}
 
