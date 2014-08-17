@@ -7,7 +7,7 @@ let mapleader=","
 " Options {{{
 " Graphical settings {{{
 colorscheme evening
-set guifont=Bitstream_Vera_Sans_Mono:h10
+set guifont=DejaVu_Sans_Mono:h10:cANSI
 set statusline=%<[%n]\ %f\ %y%h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set guioptions-=T
 set guioptions-=m
@@ -15,6 +15,20 @@ set number
 hi StatusLine ctermfg=Yellow ctermbg=Blue
 hi ColorColumn ctermbg=DarkRed guibg=DarkRed
 call matchadd("ColorColumn", '\%81v', 100)
+
+if has("gui_running")
+  " GUI is running or is about to start.
+  " Maximize gvim window (for an alternative on Windows, see simalt below).
+  set lines=50 columns=100
+else
+  " This is console Vim.
+  if exists("+lines")
+    set lines=50
+  endif
+  if exists("+columns")
+    set columns=100
+  endif
+endif
 "}}}
 
 " Filetype detection {{{
@@ -39,6 +53,13 @@ set confirm
 set wildmenu
 set hidden
 
+if !&scrolloff
+    set scrolloff=5
+endif
+if !&sidescrolloff
+    set sidescrolloff=5
+endif
+set display+=lastline,uhex
 if &encoding ==# 'latin1' && has('gui_running')
     set encoding=utf-8
 endif
@@ -51,6 +72,7 @@ endif
 " Tabs {{{
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 set expandtab
 "}}}
 
@@ -65,18 +87,10 @@ nnoremap <silent> gf :e <cfile><cr>
 "}}}
 
 " Fugitive {{{
-nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gm :Gmove<cr>
-nnoremap <leader>gr :Gremove<cr>
-
 augroup ft_fugitive
-    au!
+    autocmd!
 
-    au BufNewFile,BufRead .git/index setlocal nolist
+    autocmd BufNewFile,BufRead .git/index setlocal nolist
 augroup END
 "}}}
 
@@ -124,8 +138,8 @@ nnoremap <silent> <F12> :e #<cr>
 
 " Autocommands {{{
 function! Eatchar(pat)
-	let c = nr2char(getchar(0))
-	return (c =~ a:pat) ? '' : c
+    let c = nr2char(getchar(0))
+    return (c =~ a:pat) ? '' : c
 endfunction
 
 " Filetype: C,CPP {{{
@@ -143,7 +157,7 @@ augroup END
 " Filetype: Python {{{
 augroup filetype_python
     autocmd!
-    autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab foldmethod=indent
+    autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
     autocmd FileType python iabbrev <buffer> iff if:<left>
     autocmd FileType python iabbrev <buffer> eli elif:<left>
     autocmd FileType python iabbrev <buffer> imp import
