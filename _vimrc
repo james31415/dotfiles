@@ -6,8 +6,6 @@ let mapleader=","
 
 " Options {{{
 " Graphical settings {{{
-colorscheme evening
-set guifont=DejaVu_Sans_Mono:h10:cANSI
 set statusline=%<[%n]\ %f\ %y%h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set guioptions-=T
 set guioptions-=m
@@ -20,7 +18,10 @@ if has("gui_running")
   " GUI is running or is about to start.
   " Maximize gvim window (for an alternative on Windows, see simalt below).
   set lines=50 columns=100
+  colorscheme evening
+  set guifont=DejaVu_Sans_Mono:h10:cANSI
 else
+  colorscheme desert
   " This is console Vim.
   if exists("+lines")
     set lines=50
