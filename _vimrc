@@ -36,13 +36,10 @@ let mapleader=","
 
 " Options {{{
 " Graphical settings {{{
-colorscheme pablo
-set guifont=DejaVu_Sans_Mono:h10:cANSI
 set statusline=%<[%n]\ %f\ %y%h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set guioptions-=T
 set guioptions-=m
 set number
-let g:netrw_liststyle=4
 
 hi StatusLine ctermfg=Yellow ctermbg=Blue
 hi ColorColumn ctermbg=DarkRed guibg=DarkRed
@@ -53,7 +50,7 @@ if has("gui_running")
   " Maximize gvim window (for an alternative on Windows, see simalt below).
   set lines=50 columns=100
   colorscheme evening
-  set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI
+  set guifont=DejaVu_Sans_Mono:h10:cANSI
 else
   colorscheme desert
   " This is console Vim.
@@ -187,6 +184,7 @@ augroup filetype_c
     autocmd FileType c,cpp setlocal makeprg=build.bat
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>g :HeaderguardAdd<cr>
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>c Iclass <Esc>o{<cr>};<Esc>ko
+    autocmd FileType c,cpp inoremap <buffer> <silent> <C-B> <cr>{<cr>}<cr><Esc>kO
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>es :exe "e " . expand("%:r") . ".cpp"<cr>
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>eh :exe "e " . expand("%:r") . ".h"<cr>
 augroup END
@@ -195,7 +193,7 @@ augroup END
 " Filetype: Python {{{
 augroup filetype_python
     autocmd!
-    autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab
+    autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
     autocmd FileType python iabbrev <buffer> iff if:<left>
     autocmd FileType python iabbrev <buffer> eli elif:<left>
     autocmd FileType python iabbrev <buffer> imp import
