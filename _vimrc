@@ -1,15 +1,49 @@
-" Enables pathogen plugin {{{
-call pathogen#infect()
+if has('vim_starting')
+  if &compatible
+    set nocompatible
+  endif
+
+  set runtimepath+=~/vimfiles/bundle/Vundle.vim
+endif
+
+call vundle#begin(expand('~/vimfiles/bundle/'))
+
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'drmikehenry/vim-headerguard'
+
+Plugin 'tpope/vim-surround'
+
+Plugin 'rust-lang/rust.vim'
+
+Plugin 'tpope/vim-vinegar'
+
+Plugin 'SirVer/ultisnips'
+
+Plugin 'honza/vim-snippets'
+
+call vundle#end()
+
+" Filetype detection {{{
+syntax on
+filetype on
+filetype plugin indent on
 "}}}
 
 let mapleader=","
 
 " Options {{{
 " Graphical settings {{{
+colorscheme pablo
+set guifont=DejaVu_Sans_Mono:h10:cANSI
 set statusline=%<[%n]\ %f\ %y%h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set guioptions-=T
 set guioptions-=m
 set number
+let g:netrw_liststyle=4
+
 hi StatusLine ctermfg=Yellow ctermbg=Blue
 hi ColorColumn ctermbg=DarkRed guibg=DarkRed
 call matchadd("ColorColumn", '\%81v', 100)
@@ -19,7 +53,7 @@ if has("gui_running")
   " Maximize gvim window (for an alternative on Windows, see simalt below).
   set lines=50 columns=100
   colorscheme evening
-  set guifont=DejaVu_Sans_Mono:h10:cANSI
+  set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI
 else
   colorscheme desert
   " This is console Vim.
@@ -30,12 +64,6 @@ else
     set columns=100
   endif
 endif
-"}}}
-
-" Filetype detection {{{
-syntax on
-filetype on
-filetype plugin indent on
 "}}}
 
 " Directories {{{
@@ -49,7 +77,7 @@ set grepprg=grep\ -n
 set nowrap
 set incsearch
 set laststatus=2
-set backspace=2
+set backspace=indent,eol,start
 set confirm
 set wildmenu
 set hidden
@@ -61,8 +89,13 @@ if !&sidescrolloff
     set sidescrolloff=5
 endif
 set display+=lastline,uhex
-set textwidth=80
 set autoindent
+set copyindent
+set shiftround
+set smarttab
+
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
 if &encoding ==# 'latin1' && has('gui_running')
     set encoding=utf-8
 endif
@@ -80,6 +113,9 @@ set expandtab
 "}}}
 
 " Mappings {{{
+vmap Q gq
+nmap Q gqap
+
 nnoremap <silent> <Leader>cd :cd %:p:h<cr>
 nnoremap <space> @@
 inoremap jk <Esc>
@@ -113,10 +149,7 @@ nnoremap <Leader>m <C-W>=
 nnoremap <Leader>M <C-W>_
 "}}}
 
-" Buffer navigation {{{
-nnoremap <Tab> :bn<cr>
-nnoremap <S-Tab> :bp<cr>
-
+" Keyword search {{{
 vnoremap <silent> <Leader>s y/<C-R>"<cr>
 vnoremap <silent> <Leader>S y:%s/<C-R>"//n<cr>
 "}}}
@@ -130,11 +163,13 @@ nnoremap <silent> <C-F2> :if &guioptions =~# 'T' <Bar>
                          \set guioptions+=m <Bar>
                     \endif<cr>
 nnoremap <silent> <F4> :UB<cr>
+
 nnoremap <silent> <F5> :e<cr>
 nnoremap <silent> <C-F5> :e<cr>G
 nnoremap <silent> <F6> :TlistToggle<cr>
 nnoremap <silent> <F7> :set hls!<cr>
 nnoremap <silent> <F8> :set nu!<cr>
+
 nnoremap <silent> <F12> :e #<cr>
 "}}}
 "}}}
@@ -149,9 +184,9 @@ endfunction
 augroup filetype_c
     autocmd!
     autocmd FileType c,cpp let g:headerguard_newline=1
+    autocmd FileType c,cpp setlocal makeprg=build.bat
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>g :HeaderguardAdd<cr>
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>c Iclass <Esc>o{<cr>};<Esc>ko
-    autocmd FileType c,cpp inoremap <buffer> <silent> <C-B> <cr>{<cr>}<cr><Esc>kO
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>es :exe "e " . expand("%:r") . ".cpp"<cr>
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>eh :exe "e " . expand("%:r") . ".h"<cr>
 augroup END
@@ -160,11 +195,13 @@ augroup END
 " Filetype: Python {{{
 augroup filetype_python
     autocmd!
-    autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+    autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab
     autocmd FileType python iabbrev <buffer> iff if:<left>
     autocmd FileType python iabbrev <buffer> eli elif:<left>
     autocmd FileType python iabbrev <buffer> imp import
     autocmd FileType python iabbrev <buffer> ret return()<left><c-r>=Eatchar('\s')<cr>
+    autocmd FileType python iabbrev <buffer> return Use ret instead.
+    autocmd FileType python iabbrev <buffer> if Use iff instead.
 augroup END
 "}}}
 
@@ -173,7 +210,6 @@ augroup filetype_vim
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
     autocmd FileType vim setlocal tabstop=4 shiftwidth=4 expandtab
-    autocmd FileType vim setlocal foldmethod=marker
     autocmd FileType vim let b:surround_34 = "\"{{{ \r \"}}}"
 augroup END
 "}}}
