@@ -16,6 +16,8 @@ Plugin 'drmikehenry/vim-headerguard'
 
 Plugin 'tpope/vim-surround'
 
+Plugin 'Raimondi/delimitMate'
+
 Plugin 'rust-lang/rust.vim'
 
 Plugin 'tpope/vim-vinegar'
@@ -36,7 +38,7 @@ let mapleader=","
 
 " Options {{{
 " Graphical settings {{{
-set statusline=%<[%n]\ %f\ %y%h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+set statusline=%<[%n]\ %f\ %y\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%{\"[\".&ff.\"]\"}%{fugitive#statusline()}%k\ %-14.(%l,%c%V%)\ %P
 set guioptions-=T
 set guioptions-=m
 set number
@@ -187,6 +189,21 @@ augroup filetype_c
     autocmd FileType c,cpp inoremap <buffer> <silent> <C-B> <cr>{<cr>}<cr><Esc>kO
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>es :exe "e " . expand("%:r") . ".cpp"<cr>
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>eh :exe "e " . expand("%:r") . ".h"<cr>
+augroup END
+"}}}
+
+" FileType: Javascript {{{
+augroup filetype_javascript
+    autocmd!
+    autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
+augroup END
+"}}}
+
+" Filetype: RC {{{
+augroup filetype_rc
+    autocmd!
+    autocmd FileType rc setlocal textwidth=0 noautoindent
+    autocmd FileType rc setlocal tabstop=4 shiftwidth=4 expandtab
 augroup END
 "}}}
 
