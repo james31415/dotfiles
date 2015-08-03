@@ -165,7 +165,6 @@ nnoremap <silent> <F4> :UB<cr>
 
 nnoremap <silent> <F5> :e<cr>
 nnoremap <silent> <C-F5> :e<cr>G
-nnoremap <silent> <F6> :TlistToggle<cr>
 nnoremap <silent> <F7> :set hls!<cr>
 nnoremap <silent> <F8> :set nu!<cr>
 
