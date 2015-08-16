@@ -1,12 +1,16 @@
 if has('vim_starting')
-  if &compatible
-    set nocompatible
-  endif
-
-  set runtimepath+=~/vimfiles/bundle/Vundle.vim
+    if &compatible
+        set nocompatible
+    endif
 endif
 
-call vundle#begin(expand('~/vimfiles/bundle/'))
+if has('win32')
+    set runtimepath+=~/vimfiles/bundle/vundle.vim
+    call vundle#begin(expand('~/vimfiles/bundle/'))
+else
+    set runtimepath+=~/.vim/bundle/Vundle.vim
+    call vundle#begin(expand('~/.vim/bundle/'))
+endif
 
 Plugin 'gmarik/Vundle.vim'
 
@@ -48,27 +52,26 @@ hi ColorColumn ctermbg=DarkRed guibg=DarkRed
 call matchadd("ColorColumn", '\%81v', 100)
 
 if has("gui_running")
-  " GUI is running or is about to start.
-  " Maximize gvim window (for an alternative on Windows, see simalt below).
-  set lines=50 columns=100
-  colorscheme evening
-  set guifont=DejaVu_Sans_Mono:h10:cANSI
-else
-  colorscheme desert
-  " This is console Vim.
-  if exists("+lines")
+    colorscheme evening
+    set guifont=DejaVu_Sans_Mono:h10:cANSI
     set lines=50
-  endif
-  if exists("+columns")
-    set columns=100
-  endif
+    set columns=150
+else
+    colorscheme desert
 endif
 "}}}
 
 " Directories {{{
-set directory=$HOME/vimfiles/swap
-set bdir=$HOME/vimfiles/backup
-set viewdir=$HOME/vimfiles/view
+if has('win32')
+    set directory=$HOME/vimfiles/swap
+    set bdir=$HOME/vimfiles/backup
+    set viewdir=$HOME/vimfiles/view
+else
+    set directory=$HOME/.vim/swap
+    set bdir=$HOME/.vim/backup
+    set viewdir=$HOME/.vim/view
+endif
+
 set grepprg=grep\ -n
 "}}}
 
