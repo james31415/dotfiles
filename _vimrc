@@ -12,7 +12,7 @@ else
     call vundle#begin(expand('~/.vim/bundle/'))
 endif
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
 
