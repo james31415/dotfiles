@@ -26,10 +26,6 @@ Plugin 'rust-lang/rust.vim'
 
 Plugin 'tpope/vim-vinegar'
 
-Plugin 'SirVer/ultisnips'
-
-Plugin 'honza/vim-snippets'
-
 call vundle#end()
 
 " Filetype detection {{{
