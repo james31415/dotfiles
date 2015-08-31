@@ -181,10 +181,10 @@ endfunction
 augroup filetype_c
     autocmd!
     autocmd FileType c,cpp let g:headerguard_newline=1
+    autocmd FileType c,cpp let b:delimitMate_expand_cr = 2
     autocmd FileType c,cpp setlocal makeprg=build.bat
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>g :HeaderguardAdd<cr>
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>c Iclass <Esc>o{<cr>};<Esc>ko
-    autocmd FileType c,cpp inoremap <buffer> <silent> <C-B> <cr>{<cr>}<cr><Esc>kO
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>es :exe "e " . expand("%:r") . ".cpp"<cr>
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>eh :exe "e " . expand("%:r") . ".h"<cr>
 augroup END
