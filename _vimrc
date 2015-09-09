@@ -26,6 +26,8 @@ Plugin 'rust-lang/rust.vim'
 
 Plugin 'tpope/vim-vinegar'
 
+Plugin 'majutsushi/tagbar'
+
 call vundle#end()
 
 " Filetype detection {{{
@@ -167,6 +169,7 @@ nnoremap <silent> <C-F5> :e<cr>G
 nnoremap <silent> <F7> :set hls!<cr>
 nnoremap <silent> <F8> :set nu!<cr>
 
+nnoremap <silent> <F11> :TagbarToggle<cr>
 nnoremap <silent> <F12> :e #<cr>
 "}}}
 "}}}
