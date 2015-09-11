@@ -184,7 +184,7 @@ endfunction
 augroup filetype_c
     autocmd!
     autocmd FileType c,cpp let g:headerguard_newline=1
-    autocmd FileType c,cpp let b:delimitMate_expand_cr = 2
+    autocmd FileType c,cpp let b:delimitMate_expand_cr = 1
     autocmd FileType c,cpp setlocal makeprg=build.bat
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>g :HeaderguardAdd<cr>
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>c Iclass <Esc>o{<cr>};<Esc>ko
@@ -196,6 +196,7 @@ augroup END
 " FileType: Javascript {{{
 augroup filetype_javascript
     autocmd!
+    autocmd FileType javascript let b:delimitMate_expand_cr = 1
     autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 augroup END
 "}}}
