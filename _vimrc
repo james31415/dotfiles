@@ -32,6 +32,7 @@ call vundle#end()
 syntax on
 filetype on
 filetype plugin indent on
+set cinoptions=(0,=0
 "}}}
 
 let mapleader=","
