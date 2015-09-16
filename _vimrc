@@ -97,6 +97,15 @@ set smarttab
 
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
+if has("multi_byte")
+    if &termencoding == ""
+        let &termencoding = &encoding
+    endif
+    set encoding=utf-8
+    setglobal fileencoding=utf-8
+    set fileencodings=ucs-bom,utf-8,latin1
+endif
+
 if &encoding ==# 'latin1' && has('gui_running')
     set encoding=utf-8
 endif
