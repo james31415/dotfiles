@@ -195,7 +195,11 @@ augroup filetype_c
     autocmd!
     autocmd FileType c,cpp let g:headerguard_newline=1
     autocmd FileType c,cpp let b:delimitMate_expand_cr = 1
-    autocmd FileType c,cpp setlocal makeprg=build.bat
+    if has('win32')
+        autocmd FileType c,cpp setlocal makeprg=build.bat
+    else
+        autocmd FileType c,cpp setlocal makeprg=./build.sh
+    endif
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>g :HeaderguardAdd<cr>
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>c Iclass <Esc>o{<cr>};<Esc>ko
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>es :exe "e " . expand("%:r") . ".cpp"<cr>
