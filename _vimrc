@@ -165,22 +165,14 @@ vnoremap <silent> <Leader>S y:%s/<C-R>"//n<cr>
 "}}}
 
 " Function Key definitions {{{
-nnoremap <silent> <C-F2> :if &guioptions =~# 'T' <Bar>
-                         \set guioptions-=T <Bar>
-                         \set guioptions-=m <Bar>
-                    \else <Bar>
-                         \set guioptions+=T <Bar>
-                         \set guioptions+=m <Bar>
-                    \endif<cr>
-nnoremap <silent> <F4> :UB<cr>
+nnoremap <silent> <F2> :w<cr>
+inoremap <silent> <F2> <esc>:w<cr>i
 
-nnoremap <silent> <F5> :e<cr>
 nnoremap <silent> <C-F5> :e<cr>G
 nnoremap <silent> <F7> :set hls!<cr>
 nnoremap <silent> <F8> :set nu!<cr>
 
 nnoremap <silent> <F11> :TagbarToggle<cr>
-nnoremap <silent> <F12> :e #<cr>
 "}}}
 "}}}
 
@@ -195,6 +187,7 @@ augroup filetype_c
     autocmd!
     autocmd FileType c,cpp let g:headerguard_newline=1
     autocmd FileType c,cpp let b:delimitMate_expand_cr = 1
+
     if has('win32')
         autocmd FileType c,cpp setlocal makeprg=build.bat
     else
@@ -202,8 +195,27 @@ augroup filetype_c
     endif
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>g :HeaderguardAdd<cr>
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>c Iclass <Esc>o{<cr>};<Esc>ko
-    autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>es :exe "e " . expand("%:r") . ".cpp"<cr>
-    autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>eh :exe "e " . expand("%:r") . ".h"<cr>
+    autocmd FileType cpp setlocal tags+=~/vimfiles/tags/msvc
+
+    autocmd FileType cpp let OmniCpp_NamespaceSearch = 1
+    autocmd FileType cpp let OmniCpp_GlobalScopeSearch = 1
+    autocmd FileType cpp let OmniCpp_ShowAccess = 1
+    autocmd FileType cpp let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+    autocmd FileType cpp let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+    autocmd FileType cpp let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+    autocmd FileType cpp let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+    autocmd FileType cpp let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+    " automatically open and close the popup menu / preview window
+    autocmd CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+    autocmd FileType cpp set completeopt=menuone,menu,longest,preview
+
+    autocmd FileType c noremap <buffer> <silent> <F4> :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<cr>
+    autocmd FileType c noremap <buffer> <silent> <F5> :!ctags -R --sort=yes --c-kinds=+pl --fields=+iaS --extra=+q .<cr>
+
+    autocmd FileType cpp noremap <buffer> <silent> <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<cr>
+    autocmd FileType cpp noremap <buffer> <silent> <F5> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<cr>
+
+    autocmd FileType c,cpp noremap <buffer> <silent> <F12> <C-]>
 augroup END
 "}}}
 
