@@ -60,15 +60,17 @@ else
 endif
 "}}}
 
-" Directories {{{
+" Platform specifics {{{
 if has('win32')
     set directory=$HOME/vimfiles/swap
     set bdir=$HOME/vimfiles/backup
     set viewdir=$HOME/vimfiles/view
+    set makeprg=build.bat
 else
     set directory=$HOME/.vim/swap
     set bdir=$HOME/.vim/backup
     set viewdir=$HOME/.vim/view
+    set makeprg=./build.sh
 endif
 
 set grepprg=grep\ -n
@@ -187,12 +189,6 @@ augroup filetype_c
     autocmd!
     autocmd FileType c,cpp let g:headerguard_newline=1
     autocmd FileType c,cpp let b:delimitMate_expand_cr = 1
-
-    if has('win32')
-        autocmd FileType c,cpp setlocal makeprg=build.bat
-    else
-        autocmd FileType c,cpp setlocal makeprg=./build.sh
-    endif
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>g :HeaderguardAdd<cr>
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>c Iclass <Esc>o{<cr>};<Esc>ko
     autocmd FileType cpp setlocal tags+=~/vimfiles/tags/msvc
