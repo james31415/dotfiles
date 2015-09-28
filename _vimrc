@@ -129,8 +129,6 @@ vmap Q gq
 nmap Q gqap
 
 nnoremap <silent> <Leader>cd :cd %:p:h<cr>
-nnoremap <space> @@
-inoremap jk <Esc>
 
 " Special Files {{{
 nnoremap <Leader>ev :e $MYVIMRC<cr>
@@ -170,6 +168,7 @@ vnoremap <silent> <Leader>S y:%s/<C-R>"//n<cr>
 nnoremap <silent> <F2> :w<cr>
 inoremap <silent> <F2> <esc>:w<cr>i
 
+nnoremap <silent> <F5> :bufdo :checktime<cr>
 nnoremap <silent> <C-F5> :e<cr>G
 nnoremap <silent> <F7> :set hls!<cr>
 nnoremap <silent> <F8> :set nu!<cr>
