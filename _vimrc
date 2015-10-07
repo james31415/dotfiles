@@ -26,6 +26,8 @@ Plugin 'rust-lang/rust.vim'
 
 Plugin 'tpope/vim-vinegar'
 
+Plugin 'tpope/vim-dispatch'
+
 Plugin 'majutsushi/tagbar'
 
 call vundle#end()

@@ -10,4 +10,5 @@ Current bundles
 * [delimitMate](https://github.com/Raimondi/delimitMate)
 * [rust.vim](https://github.com/rust-lang/rust.vim)
 * [vinegar](https://github.com/tpope/vim-vinegar)
+* [dispatch](https://github.com/tpope/vim-dispatch)
 * [TagBar](https://github.com/majutsushi/tagbar)
