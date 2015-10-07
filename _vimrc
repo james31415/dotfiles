@@ -144,10 +144,20 @@ augroup END
 "}}}
 
 " Splits {{{
+command! -nargs=? -complete=file El :lefta :vnew <args>
+command! -nargs=? -complete=file Ed :bel :new <args>
+command! -nargs=? -complete=file Eu :abo :new <args>
+command! -nargs=? -complete=file Er :rightb :vnew <args>
+
+command! -nargs=? -complete=buffer Bl :lefta :vert :sb <args>
+command! -nargs=? -complete=buffer Bd :bel :sb <args>
+command! -nargs=? -complete=buffer Bu :abo :sb <args>
+command! -nargs=? -complete=buffer Br :rightb :vert :sb <args>
+
 nnoremap <Leader>H :lefta :vnew<cr>
+nnoremap <Leader>J :bel :new<cr>
 nnoremap <Leader>K :abo :new<cr>
 nnoremap <Leader>L :rightb :vnew<cr>
-nnoremap <Leader>J :bel :new<cr>
 
 nnoremap <Leader>h <C-W><Left>
 nnoremap <Leader>j <C-W><Down>
