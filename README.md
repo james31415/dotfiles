@@ -12,3 +12,4 @@ Current bundles
 * [vinegar](https://github.com/tpope/vim-vinegar)
 * [dispatch](https://github.com/tpope/vim-dispatch)
 * [TagBar](https://github.com/majutsushi/tagbar)
+* [gundo.vim](https://github.com/sjl/gundo.vim)

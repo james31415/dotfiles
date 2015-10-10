@@ -1,9 +1,12 @@
+" Startup {{{
 if has('vim_starting')
     if &compatible
         set nocompatible
     endif
 endif
+"}}}
 
+" Vundle {{{
 if has('win32')
     set runtimepath+=~/vimfiles/bundle/vundle.vim
     call vundle#begin(expand('~/vimfiles/bundle/'))
@@ -30,23 +33,33 @@ Plugin 'tpope/vim-dispatch'
 
 Plugin 'majutsushi/tagbar'
 
+Plugin 'sjl/gundo.vim'
+
 call vundle#end()
+" }}}
 
 " Filetype detection {{{
 syntax on
 filetype on
 filetype plugin indent on
 set cinoptions=(0,=0
+set modeline
 "}}}
 
-let mapleader=","
+" Folds {{{
+set foldenable
+nnoremap <space> za
+set foldlevelstart=10
+set foldnestmax=10
+set foldmethod=indent
+"}}}
 
-" Options {{{
 " Graphical settings {{{
 set statusline=%<[%n]\ %f\ %y\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%{\"[\".&ff.\"]\"}%{fugitive#statusline()}%k\ %-14.(%l,%c%V%)\ %P
 set guioptions-=T
 set guioptions-=m
 set number
+set lazyredraw
 
 hi StatusLine ctermfg=Yellow ctermbg=Blue
 hi ColorColumn ctermbg=DarkRed guibg=DarkRed
@@ -127,13 +140,17 @@ set expandtab
 "}}}
 
 " Mappings {{{
+let mapleader=","
+
 vmap Q gq
 nmap Q gqap
 
 nnoremap <silent> <Leader>cd :cd %:p:h<cr>
+nnoremap <silent> <Leader>u :GundoToggle<cr>
 
 " Special Files {{{
 nnoremap <Leader>ev :e $MYVIMRC<cr>
+nnoremap <Leader>sv :source $MYVIMRC<cr>
 nnoremap <silent> gf :e <cfile><cr>
 "}}}
 
@@ -258,9 +275,9 @@ augroup END
 " Filetype: VIM {{{
 augroup filetype_vim
     autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
     autocmd FileType vim setlocal tabstop=4 shiftwidth=4 expandtab
     autocmd FileType vim let b:surround_34 = "\"{{{ \r \"}}}"
 augroup END
 "}}}
-"}}}
+
+" vim:foldmethod=marker:foldlevel=0
