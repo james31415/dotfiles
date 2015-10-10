@@ -61,9 +61,7 @@ set guioptions-=m
 set number
 set lazyredraw
 
-hi StatusLine ctermfg=Yellow ctermbg=Blue
-hi ColorColumn ctermbg=DarkRed guibg=DarkRed
-call matchadd("ColorColumn", '\%81v', 100)
+set colorcolumn=80,120
 
 if has("gui_running")
     colorscheme evening
