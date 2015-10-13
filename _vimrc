@@ -27,9 +27,6 @@ Plugin 'Raimondi/delimitMate'
 
 Plugin 'rust-lang/rust.vim'
 
-Plugin 'mxw/vim-jsx'
-let g:jsx_ext_required = 0
-
 Plugin 'tpope/vim-vinegar'
 
 Plugin 'tpope/vim-dispatch'
