@@ -74,16 +74,16 @@ endif
 
 " Platform specifics {{{
 if has('win32')
-    set directory=$HOME/vimfiles/swap
-    set bdir=$HOME/vimfiles/backup
-    set viewdir=$HOME/vimfiles/view
-    set undodir=$HOME/vimfiles/undo
+    set directory=$HOME/vimdirs/swap
+    set bdir=$HOME/vimdirs/backup
+    set viewdir=$HOME/vimdirs/view
+    set undodir=$HOME/vimdirs/undo
     set makeprg=build.bat
 else
-    set directory=$HOME/.vim/swap
-    set bdir=$HOME/.vim/backup
-    set viewdir=$HOME/.vim/view
-    set undodir=$HOME/.vim/undo
+    set directory=$HOME/.vimdirs/swap
+    set bdir=$HOME/.vimdirs/backup
+    set viewdir=$HOME/.vimdirs/view
+    set undodir=$HOME/.vimdirs/undo
     set makeprg=./build.sh
 endif
 
