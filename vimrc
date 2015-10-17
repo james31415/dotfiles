@@ -59,7 +59,6 @@ set statusline=%<[%n]\ %f\ %y\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists
 set guioptions-=T
 set guioptions-=m
 set number
-set lazyredraw
 
 set colorcolumn=80,120
 
@@ -78,16 +77,24 @@ if has('win32')
     set directory=$HOME/vimfiles/swap
     set bdir=$HOME/vimfiles/backup
     set viewdir=$HOME/vimfiles/view
+    set undodir=$HOME/vimfiles/undo
     set makeprg=build.bat
 else
     set directory=$HOME/.vim/swap
     set bdir=$HOME/.vim/backup
     set viewdir=$HOME/.vim/view
+    set undodir=$HOME/.vim/undo
     set makeprg=./build.sh
 endif
 
 set grepprg=grep\ -n
 "}}}
+
+" Undo {{{
+set undofile
+set undolevels=1000
+set undoreload=10000
+" }}}
 
 " Miscellaneous {{{
 set nowrap
