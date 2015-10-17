@@ -1,3 +1,6 @@
+dotfiles
+=====
+
 vimrc
 =====
 Current bundles
