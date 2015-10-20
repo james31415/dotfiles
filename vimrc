@@ -4,6 +4,7 @@ if has('vim_starting')
         set nocompatible
     endif
 endif
+filetype off
 "}}}
 
 " Vundle {{{
