@@ -25,7 +25,7 @@ Plugin 'drmikehenry/vim-headerguard'
 Plugin 'tpope/vim-surround'
 
 Plugin 'Raimondi/delimitMate'
-let b:delimitMate_expand_cr = 1
+let g:delimitMate_expand_cr = 1
 
 Plugin 'rust-lang/rust.vim'
 
