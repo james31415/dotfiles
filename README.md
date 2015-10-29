@@ -16,3 +16,4 @@ Current bundles
 * [dispatch](https://github.com/tpope/vim-dispatch)
 * [TagBar](https://github.com/majutsushi/tagbar)
 * [gundo.vim](https://github.com/sjl/gundo.vim)
+* [vim-javascript-syntax](https://github.com/jelera/vim-javascript-syntax)

@@ -37,6 +37,8 @@ Plugin 'majutsushi/tagbar'
 
 Plugin 'sjl/gundo.vim'
 
+Plugin 'jelera/vim-javascript-syntax'
+
 call vundle#end()
 " }}}
 
@@ -253,6 +255,8 @@ augroup END
 augroup filetype_javascript
     autocmd!
     autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd FileType javascript setlocal foldmethod=syntax
+    autocmd FileType javascript call JavaScriptFold()
 augroup END
 "}}}
 
