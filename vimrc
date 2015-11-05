@@ -242,10 +242,10 @@ augroup filetype_c
     autocmd FileType cpp set completeopt=menuone,menu,longest,preview
 
     autocmd FileType c noremap <buffer> <silent> <F4> :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<cr>
-    autocmd FileType c noremap <buffer> <silent> <F5> :!ctags -R --sort=yes --c-kinds=+pl --fields=+iaS --extra=+q .<cr>
+    autocmd FileType c noremap <buffer> <silent> <F6> :!ctags -R --sort=yes --c-kinds=+pl --fields=+iaS --extra=+q .<cr>
 
     autocmd FileType cpp noremap <buffer> <silent> <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<cr>
-    autocmd FileType cpp noremap <buffer> <silent> <F5> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<cr>
+    autocmd FileType cpp noremap <buffer> <silent> <F6> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extra=+q .<cr>
 
     autocmd FileType c,cpp noremap <buffer> <silent> <F12> <C-]>
 augroup END
