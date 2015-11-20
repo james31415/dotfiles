@@ -55,7 +55,6 @@ set foldenable
 nnoremap <space> za
 set foldlevelstart=10
 set foldnestmax=10
-set foldmethod=indent
 "}}}
 
 " Graphical settings {{{
@@ -255,8 +254,6 @@ augroup END
 augroup filetype_javascript
     autocmd!
     autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-    autocmd FileType javascript setlocal foldmethod=syntax
-    autocmd FileType javascript call JavaScriptFold()
 augroup END
 "}}}
 
