@@ -29,6 +29,8 @@ let g:delimitMate_expand_cr = 1
 
 Plugin 'rust-lang/rust.vim'
 
+Plugin 'elzr/vim-json'
+
 Plugin 'tpope/vim-vinegar'
 
 Plugin 'tpope/vim-dispatch'

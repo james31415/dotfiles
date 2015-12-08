@@ -12,6 +12,7 @@ Current bundles
 * [surround](https://github.com/tpope/vim-surround)
 * [delimitMate](https://github.com/Raimondi/delimitMate)
 * [rust.vim](https://github.com/rust-lang/rust.vim)
+* [vim-json](https://github.com/elzr/vim-json)
 * [vinegar](https://github.com/tpope/vim-vinegar)
 * [dispatch](https://github.com/tpope/vim-dispatch)
 * [TagBar](https://github.com/majutsushi/tagbar)
