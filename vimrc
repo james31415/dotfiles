@@ -48,7 +48,6 @@ call vundle#end()
 syntax on
 filetype on
 filetype plugin indent on
-set cinoptions=(0,=0
 set modeline
 "}}}
 
@@ -226,6 +225,8 @@ endfunction
 augroup filetype_c
     autocmd!
     autocmd FileType c,cpp let g:headerguard_newline=1
+    autocmd FileType c,cpp setlocal cinoptions="(0,=0"
+
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>g :HeaderguardAdd<cr>
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>c Iclass <Esc>o{<cr>};<Esc>ko
     autocmd FileType cpp setlocal tags+=~/vimfiles/tags/msvc
