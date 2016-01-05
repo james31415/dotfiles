@@ -40,6 +40,9 @@ Plugin 'majutsushi/tagbar'
 Plugin 'sjl/gundo.vim'
 
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'scrooloose/syntastic'
+let g:syntastic_javascript_checkers = ['eslint']
 
 call vundle#end()
 " }}}
@@ -200,6 +203,11 @@ nnoremap <Leader>M <C-W>_
 " Keyword search {{{
 vnoremap <silent> <Leader>s y/<C-R>"<cr>
 vnoremap <silent> <Leader>S y:%s/<C-R>"//n<cr>
+"}}}
+
+" Quickfix window {{{
+nnoremap <silent> <C-N> :cn<cr>
+nnoremap <silent> <C-P> :cp<cr>
 "}}}
 
 " Function Key definitions {{{

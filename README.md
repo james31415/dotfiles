@@ -18,3 +18,5 @@ Current bundles
 * [TagBar](https://github.com/majutsushi/tagbar)
 * [gundo.vim](https://github.com/sjl/gundo.vim)
 * [vim-javascript-syntax](https://github.com/jelera/vim-javascript-syntax)
+* [Indent Guides](https://github.com/nathanaelkane/vim-indent-guides)
+* [Syntastic](https://github.com/scrooloose/syntastic)
