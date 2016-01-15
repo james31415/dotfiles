@@ -43,6 +43,10 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/syntastic'
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 call vundle#end()
 " }}}
@@ -62,7 +66,7 @@ set foldnestmax=10
 "}}}
 
 " Graphical settings {{{
-set statusline=%<[%n]\ %f\ %y\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%{\"[\".&ff.\"]\"}%{fugitive#statusline()}%k\ %-14.(%l,%c%V%)\ %P
+set statusline=%<[%n]\ %f\ %y\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%{\"[\".&ff.\"]\"}%{fugitive#statusline()}%k\ %-14.(%l,%c%V%)\ %#warningmsg#\ %{SyntasticStatuslineFlag()}\ %*\ %P
 set guioptions-=T
 set guioptions-=m
 set number
@@ -205,9 +209,11 @@ vnoremap <silent> <Leader>s y/<C-R>"<cr>
 vnoremap <silent> <Leader>S y:%s/<C-R>"//n<cr>
 "}}}
 
-" Quickfix window {{{
-nnoremap <silent> <C-N> :cn<cr>
-nnoremap <silent> <C-P> :cp<cr>
+" Quickfix and location windows {{{
+nnoremap <silent> ]n :cn<cr>
+nnoremap <silent> [n :cp<cr>
+nnoremap <silent> ]l :lne<cr>
+nnoremap <silent> [l :lp<cr>
 "}}}
 
 " Function Key definitions {{{
@@ -265,6 +271,7 @@ augroup END
 augroup filetype_javascript
     autocmd!
     autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd FileType javascript setlocal equalprg=python\ c:\\Python27\\Scripts\\js-beautify\ --indent-size=2\ -X\ --stdin
 augroup END
 "}}}
 
