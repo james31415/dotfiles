@@ -43,6 +43,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/syntastic'
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_c_checkers = ['cppcheck']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -287,12 +288,6 @@ augroup END
 augroup filetype_python
     autocmd!
     autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-    autocmd FileType python iabbrev <buffer> iff if:<left>
-    autocmd FileType python iabbrev <buffer> eli elif:<left>
-    autocmd FileType python iabbrev <buffer> imp import
-    autocmd FileType python iabbrev <buffer> ret return()<left><c-r>=Eatchar('\s')<cr>
-    autocmd FileType python iabbrev <buffer> return Use ret instead.
-    autocmd FileType python iabbrev <buffer> if Use iff instead.
 augroup END
 "}}}
 
