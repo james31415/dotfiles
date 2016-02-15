@@ -1,13 +1,12 @@
-" Startup {{{
+" Startup
 if has('vim_starting')
     if &compatible
         set nocompatible
     endif
 endif
 filetype off
-"}}}
 
-" Vundle {{{
+" Vundle
 if has('win32')
     set runtimepath+=~/vimfiles/bundle/vundle.vim
     call vundle#begin(expand('~/vimfiles/bundle/'))
@@ -50,41 +49,28 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 call vundle#end()
-" }}}
 
-" Filetype detection {{{
+" Filetype detection
 syntax on
-filetype on
 filetype plugin indent on
-set modeline
-"}}}
 
-" Folds {{{
-set foldenable
-nnoremap <space> za
-set foldlevelstart=10
-set foldnestmax=10
-"}}}
-
-" Graphical settings {{{
-set statusline=%<[%n]\ %f\ %y\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%{\"[\".&ff.\"]\"}%{fugitive#statusline()}%k\ %-14.(%l,%c%V%)\ %#warningmsg#\ %{SyntasticStatuslineFlag()}\ %*\ %P
+" Graphical settings
+set ruler
 set guioptions-=T
 set guioptions-=m
 set number
-
-set colorcolumn=80,120
+set formatoptions-=cro
 
 if has("gui_running")
-    colorscheme evening
     set guifont=DejaVu_Sans_Mono:h10:cANSI
     set lines=50
-    set columns=150
+    set columns=200
+    colorscheme evening
 else
     colorscheme desert
 endif
-"}}}
 
-" Platform specifics {{{
+" Platform specifics
 if has('win32')
     set directory=$HOME/vimfiles/swap
     set bdir=$HOME/vimfiles/backup
@@ -100,21 +86,27 @@ else
 endif
 
 set grepprg=grep\ -n
-"}}}
 
-" Undo {{{
+" Undo
 set undofile
 set undolevels=1000
 set undoreload=10000
-" }}}
 
-" Miscellaneous {{{
+" Miscellaneous
+set autowrite
+set autoread
+
+set fileformats=unix,dos
+set wildmode=list:longest,full
+set infercase
+
+set noshowmode
+
+set updatecount=10
+
 set nowrap
 set incsearch
-set laststatus=2
 set backspace=indent,eol,start
-set confirm
-set wildmenu
 set hidden
 
 if !&scrolloff
@@ -125,6 +117,7 @@ if !&sidescrolloff
 endif
 set display+=lastline,uhex
 set autoindent
+set smartindent
 set copyindent
 set shiftround
 set smarttab
@@ -147,16 +140,14 @@ endif
 if &history < 1000
     set history=1000
 endif
-"}}}
 
-" Tabs {{{
+" Tabs
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-"}}}
 
-" Mappings {{{
+" Mappings
 let mapleader=","
 
 vmap Q gq
@@ -165,21 +156,18 @@ nmap Q gqap
 nnoremap <silent> <Leader>cd :cd %:p:h<cr>
 nnoremap <silent> <Leader>u :GundoToggle<cr>
 
-" Special Files {{{
-nnoremap <Leader>ev :e $MYVIMRC<cr>
+" Special Files
+nnoremap <Leader>ev :next $MYVIMRC<cr>
 nnoremap <Leader>sv :source $MYVIMRC<cr>
-nnoremap <silent> gf :e <cfile><cr>
-"}}}
 
-" Fugitive {{{
+" Fugitive
 augroup ft_fugitive
     autocmd!
 
     autocmd BufNewFile,BufRead .git/index setlocal nolist
 augroup END
-"}}}
 
-" Splits {{{
+" Splits
 command! -nargs=? -complete=file El :lefta :vnew <args>
 command! -nargs=? -complete=file Ed :bel :new <args>
 command! -nargs=? -complete=file Eu :abo :new <args>
@@ -203,21 +191,18 @@ nnoremap <Leader>l <C-W><Right>
 set wmh=0
 nnoremap <Leader>m <C-W>=
 nnoremap <Leader>M <C-W>_
-"}}}
 
-" Keyword search {{{
+" Keyword search
 vnoremap <silent> <Leader>s y/<C-R>"<cr>
 vnoremap <silent> <Leader>S y:%s/<C-R>"//n<cr>
-"}}}
 
-" Quickfix and location windows {{{
+" Quickfix and location windows
 nnoremap <silent> ]n :cn<cr>
 nnoremap <silent> [n :cp<cr>
 nnoremap <silent> ]l :lne<cr>
 nnoremap <silent> [l :lp<cr>
-"}}}
 
-" Function Key definitions {{{
+" Function Key definitions
 nnoremap <silent> <F2> :w<cr>
 inoremap <silent> <F2> <esc>:w<cr>i
 
@@ -227,16 +212,14 @@ nnoremap <silent> <F7> :set hls!<cr>
 nnoremap <silent> <F8> :set nu!<cr>
 
 nnoremap <silent> <F11> :TagbarToggle<cr>
-"}}}
-"}}}
 
-" Autocommands {{{
+" Autocommands
 function! Eatchar(pat)
     let c = nr2char(getchar(0))
     return (c =~ a:pat) ? '' : c
 endfunction
 
-" Filetype: C,CPP {{{
+" Filetype: C,CPP
 augroup filetype_c
     autocmd!
     autocmd FileType c,cpp let g:headerguard_newline=1
@@ -266,37 +249,22 @@ augroup filetype_c
 
     autocmd FileType c,cpp noremap <buffer> <silent> <F12> <C-]>
 augroup END
-"}}}
 
-" FileType: Javascript {{{
+" FileType: Javascript
 augroup filetype_javascript
     autocmd!
     autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
     autocmd FileType javascript setlocal equalprg=python\ c:\\Python27\\Scripts\\js-beautify\ --indent-size=2\ -X\ --stdin
 augroup END
-"}}}
 
-" Filetype: RC {{{
+" Filetype: RC
 augroup filetype_rc
     autocmd!
     autocmd FileType rc setlocal textwidth=0 noautoindent
-    autocmd FileType rc setlocal tabstop=4 shiftwidth=4 expandtab
 augroup END
-"}}}
 
-" Filetype: Python {{{
-augroup filetype_python
-    autocmd!
-    autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-augroup END
-"}}}
-
-" Filetype: VIM {{{
+" Filetype: VIM
 augroup filetype_vim
     autocmd!
-    autocmd FileType vim setlocal tabstop=4 shiftwidth=4 expandtab
-    autocmd FileType vim let b:surround_34 = "\"{{{ \r \"}}}"
+    autocmd FileType vim setlocal formatoptions-=cro
 augroup END
-"}}}
-
-" vim:foldmethod=marker:foldlevel=0
