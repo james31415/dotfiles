@@ -63,8 +63,6 @@ set formatoptions-=cro
 
 if has("gui_running")
     set guifont=DejaVu_Sans_Mono:h10:cANSI
-    set lines=50
-    set columns=200
     colorscheme evening
 else
     colorscheme desert
