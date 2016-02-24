@@ -51,7 +51,6 @@ let g:syntastic_check_on_wq = 0
 call vundle#end()
 
 " Filetype detection
-syntax on
 filetype plugin indent on
 
 " Graphical settings
@@ -231,6 +230,26 @@ function! Eatchar(pat)
     let c = nr2char(getchar(0))
     return (c =~ a:pat) ? '' : c
 endfunction
+
+" Goto last location in non-empty files
+autocmd BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
+                   \|     exe "normal! g`\""
+                   \|  endif
+
+" Create directories if they don't exist on write
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
 
 " Filetype: C,CPP
 augroup filetype_c
