@@ -39,6 +39,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'sjl/gundo.vim'
 
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/syntastic'
 let g:syntastic_javascript_checkers = ['eslint']
@@ -52,6 +53,7 @@ call vundle#end()
 
 " Filetype detection
 filetype plugin indent on
+set autoindent
 
 " Graphical settings
 set ruler
@@ -113,9 +115,6 @@ if !&sidescrolloff
     set sidescrolloff=5
 endif
 set display+=lastline,uhex
-set autoindent
-set smartindent
-set copyindent
 set shiftround
 set smarttab
 
@@ -237,7 +236,7 @@ autocmd BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
                    \|  endif
 
 " Create directories if they don't exist on write
-function s:MkNonExDir(file, buf)
+function! s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
         let dir=fnamemodify(a:file, ':h')
         if !isdirectory(dir)
@@ -255,7 +254,7 @@ augroup END
 augroup filetype_c
     autocmd!
     autocmd FileType c,cpp let g:headerguard_newline=1
-    autocmd FileType c,cpp setlocal cinoptions="(0,=0"
+    autocmd FileType c,cpp setlocal cinoptions=(0,=0
 
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>g :HeaderguardAdd<cr>
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>c Iclass <Esc>o{<cr>};<Esc>ko
