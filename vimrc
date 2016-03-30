@@ -17,6 +17,8 @@ endif
 
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'romainl/flattened'
+
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'drmikehenry/vim-headerguard'
@@ -54,6 +56,8 @@ call vundle#end()
 
 " Filetype detection
 filetype plugin indent on
+syntax on
+
 set autoindent
 
 " Graphical settings
@@ -65,9 +69,7 @@ set formatoptions-=cro
 
 if has("gui_running")
     set guifont=DejaVu_Sans_Mono:h10:cANSI
-    colorscheme evening
-else
-    colorscheme desert
+    colorscheme flattened_dark
 endif
 
 " Platform specifics
