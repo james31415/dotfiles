@@ -145,12 +145,28 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+function! TabToggle()
+    if &expandtab
+        set tabstop=3
+        set shiftwidth=3
+        set softtabstop=0
+        set noexpandtab
+    else
+        set tabstop=4
+        set shiftwidth=4
+        set softtabstop=4
+        set expandtab
+    endif
+endfunction
+" Mapping defined below
 
 " Mappings
 let mapleader=","
 
 vmap Q gq
 nmap Q gqap
+
+" Remember: Indent Guides defines <Leader>ig
 
 nnoremap <silent> <Leader>cd :cd %:p:h<cr>
 nnoremap <silent> <Leader>u :GundoToggle<cr>
@@ -209,8 +225,18 @@ nnoremap <silent> <F5> :bufdo :checktime<cr>
 nnoremap <silent> <C-F5> :e<cr>G
 nnoremap <silent> <F7> :set hls!<cr>
 nnoremap <silent> <F8> :set nu!<cr>
+nnoremap <silent> <F9> mz:execute TabToggle()<cr>'z
 
 nnoremap <silent> <F11> :TagbarToggle<cr>
+
+" Show syntax highlighting groups for word under cursor
+nmap <C-S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
 
 function! s:ExecuteInShell(command)
     let command = join(map(split(a:command), 'expand(v:val)'))
