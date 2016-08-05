@@ -97,6 +97,7 @@ set undoreload=10000
 " Miscellaneous
 set autowrite
 set autoread
+set backupcopy=yes
 
 set fileformats=unix,dos
 set wildmode=list:longest,full
