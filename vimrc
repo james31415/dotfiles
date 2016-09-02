@@ -329,3 +329,15 @@ augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal formatoptions-=cro
 augroup END
+
+" Filetype: Jenkinsfile
+augroup filetype_Jenkinsfile
+    autocmd!
+    autocmd BufNewFile,BufRead * if expand('%') == 'Jenkinsfile' | set ft=groovy | endif
+augroup END
+
+" Filetype: groovy
+augroup filetype_groovy
+    autocmd!
+    autocmd FileType groovy setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+augroup END
