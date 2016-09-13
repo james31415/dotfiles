@@ -9,6 +9,8 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 files="screenrc vim vimrc oh-my-zsh zshrc"     # list of files/folders to symlink in homedir
+user=${1-$SUDO_USER}
+echo User: $user
 
 ##########
 
@@ -39,7 +41,7 @@ if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
     fi
     # Set the default shell to zsh if it isn't currently set to zsh
     if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
-        chsh -s $(which zsh)
+        chsh -s $(which zsh) $user
     fi
 fi
 }
