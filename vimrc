@@ -318,6 +318,12 @@ augroup filetype_javascript
     autocmd FileType javascript setlocal equalprg=python\ c:\\Python27\\Scripts\\js-beautify\ --indent-size=2\ -X\ --stdin
 augroup END
 
+" FileType: Ruby
+augroup filetype_ruby
+    autocmd!
+    autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+augroup END
+
 " Filetype: RC
 augroup filetype_rc
     autocmd!
