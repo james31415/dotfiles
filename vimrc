@@ -346,3 +346,9 @@ augroup filetype_groovy
     autocmd!
     autocmd FileType groovy setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 augroup END
+
+augroup vimrc_note
+    autocmd!
+    autocmd Syntax * syn match MyTodo /\v<(NOTE)/ containedin=.*Comment.*,vimCommentTitle
+augroup END
+hi def link MyTodo Todo
