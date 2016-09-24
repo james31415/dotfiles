@@ -40,6 +40,11 @@ Plugin 'majutsushi/tagbar'
 
 Plugin 'sjl/gundo.vim'
 
+Plugin 'mileszs/ack.vim'
+if executable('rg')
+    let g:ackprg = 'rg --vimgrep'
+endif
+
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
