@@ -289,6 +289,8 @@ augroup END
 augroup filetype_c
     autocmd!
     autocmd FileType c,cpp let g:headerguard_newline=1
+    autocmd FileType c,cpp setlocal cinoptions=(0,=0
+")
 
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>g :HeaderguardAdd<cr>
     autocmd FileType c,cpp nnoremap <buffer> <silent> <Leader>c Iclass <Esc>o{<cr>};<Esc>ko
@@ -319,7 +321,7 @@ augroup END
 augroup filetype_javascript
     autocmd!
     autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-    autocmd FileType javascript setlocal equalprg=python\ c:\\Python27\\Scripts\\js-beautify\ --indent-size=2\ -X\ --stdin
+    autocmd FileType javascript setlocal equalprg=js-beautify\ --indent-size=2\ -X\ --stdin
 augroup END
 
 " FileType: Ruby
