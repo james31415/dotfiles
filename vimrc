@@ -73,7 +73,12 @@ set number
 set formatoptions-=cro
 
 if has("gui_running")
-    set guifont=DejaVu_Sans_Mono:h10:cANSI
+    if has('win32')
+        set guifont=DejaVu_Sans_Mono:h10:cANSI
+    else
+        set guifont=DejaVu\ Sans\ Mono\ 10
+    endif
+
     colorscheme flattened_dark
 endif
 
