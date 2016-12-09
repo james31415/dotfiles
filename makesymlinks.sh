@@ -6,9 +6,9 @@
 
 ########## Variables
 
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
-files="screenrc vim vimrc oh-my-zsh zshrc"     # list of files/folders to symlink in homedir
+dir=~/.dotfiles                    # dotfiles directory
+olddir=~/.dotfiles_old             # old dotfiles backup directory
+files="screenrc vim vimrc oh-my-zsh zshenv zshrc"     # list of files/folders to symlink in homedir
 user=${1-$SUDO_USER}
 echo User: $user
 
