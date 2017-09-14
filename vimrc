@@ -111,6 +111,9 @@ if &history < 1000
 endif
 
 " Tabs
+" Copy previous indent
+set autoindent
+
 " Use spaces instead of tabs
 set expandtab
 
