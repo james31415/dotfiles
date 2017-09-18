@@ -60,6 +60,8 @@ if has("gui_running")
     colorscheme flattened_dark
 endif
 
+set autoread
+
 set noswapfile
 set nobackup
 set nowritebackup
@@ -81,7 +83,6 @@ set noshowmode
 
 set nowrap
 set incsearch
-set backspace=indent,eol,start
 set hidden
 
 if !&scrolloff
@@ -116,6 +117,12 @@ set autoindent
 
 " Use spaces instead of tabs
 set expandtab
+
+" Backspace behavior
+set backspace=indent,eol,start
+
+" Permits deletion of 4 space tabs as a single unit
+set smarttab
 
 " Number of spaces for tabs
 set tabstop=4
