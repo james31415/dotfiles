@@ -127,6 +127,7 @@ set smarttab
 " Number of spaces for tabs
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 
 " Mapping defined below
 
