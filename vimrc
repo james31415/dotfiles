@@ -26,8 +26,6 @@ Plugin 'tpope/vim-surround'
 " Netrw enhancement
 Plugin 'tpope/vim-vinegar'
 
-Plugin 'jremmen/vim-ripgrep'
-
 Plugin 'scrooloose/syntastic'
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_c_checkers = ['cppcheck']
@@ -73,7 +71,7 @@ else
     set makeprg=./build.sh
 endif
 
-set grepprg=grep\ -n
+set grepprg=rg\ --vimgrep
 
 " Miscellaneous
 set fileformats=unix,dos
@@ -182,6 +180,7 @@ nnoremap <silent> [l :lp<cr>
 nnoremap <silent> <C-F5> :e<cr>G
 nnoremap <silent> <F7> :set hls!<cr>
 nnoremap <silent> <F8> :set nu!<cr>
+nnoremap <silent> <F9> :set expandtab!<cr>
 
 function! s:ExecuteInShell(command)
     let command = join(map(split(a:command), 'expand(v:val)'))
