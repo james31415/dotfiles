@@ -2,3 +2,6 @@ export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/
 export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 export LD_LIBRARY_PATH="/usr/local/lib"
 
+### Added by surfraw. To remove use surfraw-update-path -remove
+	export PATH=$PATH:/usr/lib/surfraw
+### End surfraw addition.
