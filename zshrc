@@ -14,6 +14,9 @@ bindkey -v
 
 alias li="ls -i"
 
+alias less="w3m"
+alias man="w3mman"
+
 export LC_ALL=en_US.UTF-8
 
 # MPD daemon start (if no other user instance exists)
