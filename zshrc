@@ -1,7 +1,5 @@
-if [ "$PS1" != "" -a "${STARTED_SCREEN:-x}" = x -a "${SSH_TTY:-x}" != x ]; then
-    export STARTED_SCREEN=1
-    screen -RR && exit 0
-    echo "Screen failed! continuing with normal startup"
+if [ -z "$STY" ] && [ -n "$SSH_TTY" ]; then
+    screen -xRR remote && exit 0
 fi
 
 export ZSH=$HOME/.oh-my-zsh
