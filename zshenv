@@ -5,3 +5,6 @@ export LD_LIBRARY_PATH="/usr/local/lib"
 ### Added by surfraw. To remove use surfraw-update-path -remove
 	export PATH=$PATH:/usr/lib/surfraw
 ### End surfraw addition.
+
+export PATH=$PATH:$HOME/go/bin
+export GOPATH=$HOME/go:$HOME/code/Game

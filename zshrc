@@ -11,10 +11,9 @@ export EDITOR='vim'
 bindkey -v
 
 alias li="ls -i"
+alias mt="mount-tablet"
+alias ncmpc="ncmpc -c"
 
 alias less="w3m"
 
 export LC_ALL=en_US.UTF-8
-
-# MPD daemon start (if no other user instance exists)
-[ ! -s ~/.config/mpd/pid ] && mpd
