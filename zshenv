@@ -7,4 +7,3 @@ export LD_LIBRARY_PATH="/usr/local/lib"
 ### End surfraw addition.
 
 export PATH=$PATH:$HOME/go/bin
-export GOPATH=$HOME/go:$HOME/code/Game
