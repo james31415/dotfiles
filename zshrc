@@ -11,8 +11,12 @@ export EDITOR='vim'
 bindkey -v
 
 alias ddg="duckduckgo"
+alias wiki="wikipedia"
+
 alias li="ls -i"
 alias mt="mount-tablet"
 alias ncmpc="ncmpc -c"
 
 export LC_ALL=en_US.UTF-8
+
+fortune -a

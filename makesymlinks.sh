@@ -8,7 +8,7 @@
 
 dir=~/.dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
-files="screenrc vim vimrc oh-my-zsh zlogin zshenv zshrc"     # list of files/folders to symlink in homedir
+files="Xresources screenrc vim vimrc oh-my-zsh zlogin zshenv zshrc"     # list of files/folders to symlink in homedir
 user=${1-$SUDO_USER}
 echo User: $user
 
