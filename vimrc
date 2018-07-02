@@ -18,6 +18,9 @@ endif
 " Package manager
 Plugin 'VundleVim/Vundle.vim'
 
+" Theme
+Plugin 'romainl/flattened'
+
 Plugin 'tpope/vim-surround'
 
 " Netrw enhancement
@@ -35,6 +38,16 @@ set guioptions-=T
 set guioptions-=m
 set number
 set formatoptions-=cro
+
+if has("gui_running")
+    if has('win32')
+        set guifont=DejaVu_Sans_Mono:h10:cANSI
+    else
+        set guifont=DejaVu\ Sans\ Mono\ 10
+    endif
+
+    colorscheme flattened_dark
+endif
 
 set autoread
 
