@@ -37,6 +37,7 @@ set ruler
 set guioptions-=T
 set guioptions-=m
 set number
+set relativenumber
 set formatoptions-=cro
 
 if has("gui_running")
