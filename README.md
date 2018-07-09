@@ -10,5 +10,3 @@ Current bundles
 * [flattened](https://github.com/romainl/flattened)
 * [surround](https://github.com/tpope/vim-surround)
 * [vinegar](https://github.com/tpope/vim-vinegar)
-* [vim-ripgrep](https://github.com/jremmen/vim-ripgrep)
-* [Syntastic](https://github.com/scrooloose/syntastic)
