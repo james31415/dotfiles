@@ -26,6 +26,9 @@ Plugin 'tpope/vim-surround'
 " Netrw enhancement
 Plugin 'tpope/vim-vinegar'
 
+" Typescript
+Plugin 'leafgarland/typescript-vim'
+
 call vundle#end()
 
 " Filetype detection
@@ -216,6 +219,13 @@ augroup filetype_javascript
     autocmd!
     autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
     autocmd FileType javascript setlocal equalprg=python\ c:\\Python27\\Scripts\\js-beautify\ --indent-size=2\ -X\ --stdin
+augroup END
+
+" FileType: Typescript
+augroup filetype_typescript
+    autocmd!
+    autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd FileType typescript setlocal equalprg=python\ c:\\Python27\\Scripts\\js-beautify\ --indent-size=2\ -X\ --stdin
 augroup END
 
 " FileType: Ruby
