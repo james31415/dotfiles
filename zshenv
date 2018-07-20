@@ -3,8 +3,9 @@ export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 export LD_LIBRARY_PATH="/usr/local/lib"
 
 ### Added by surfraw. To remove use surfraw-update-path -remove
-	export PATH=$PATH:/usr/lib/surfraw
+	export PATH=$PATH:/usr/lib/surfraw:$HOME/.config/surfraw/elvi
 ### End surfraw addition.
 
 export PATH=$PATH:$HOME/go/bin
 export NNTPSERVER=diesel.cu.mi.it
+export GNUPGHOME=$HOME/.gnupg
