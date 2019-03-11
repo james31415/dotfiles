@@ -50,7 +50,7 @@ if has("gui_running")
         set guifont=DejaVu\ Sans\ Mono\ 10
     endif
 
-    colorscheme flattened_dark
+    colorscheme flattened_light
 endif
 
 set autoread
