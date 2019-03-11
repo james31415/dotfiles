@@ -108,19 +108,14 @@ endif
 " Copy previous indent
 set autoindent
 
-" Use spaces instead of tabs
-set expandtab
-
 " Backspace behavior
 set backspace=indent,eol,start
 
 " Permits deletion of 4 space tabs as a single unit
 set smarttab
 
-" Number of spaces for tabs
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
 
 " Mapping defined below
 
@@ -171,89 +166,3 @@ nnoremap <silent> [n :cp<cr>
 nnoremap <silent> ]l :lne<cr>
 nnoremap <silent> [l :lp<cr>
 
-" Function Key definitions
-nnoremap <silent> <C-F5> :e<cr>G
-nnoremap <silent> <F7> :set hls!<cr>
-nnoremap <silent> <F8> :set nu!<cr>
-nnoremap <silent> <F9> :set expandtab!<cr>
-
-function! s:ExecuteInShell(command)
-    let command = join(map(split(a:command), 'expand(v:val)'))
-    let winnr = bufwinnr('^' . command . '$')
-    silent! execute winnr < 0 ? 'botright new ' . fnameescape(command) : winnr . 'wincmd w'
-    setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap number
-    echo 'Execute ' . command . '...'
-    silent! execute 'silent %!' . command
-    silent! execute 'resize ' . line('$')
-    silent! redraw
-    silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
-    silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<cr>'
-    echo 'Shell command ' . command . ' executed.'
-endfunction
-command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
-
-" Autocommands
-
-" Goto last location in non-empty files
-autocmd BufReadPost *  if line("'\"") > 1 && line("'\"") <= line("$")
-                   \|     exe "normal! g`\""
-                   \|  endif
-
-" Create directories if they don't exist on write
-function! s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
-    endif
-endfunction
-
-augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-augroup END
-
-" FileType: Javascript
-augroup filetype_javascript
-    autocmd!
-    autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
-    autocmd FileType javascript setlocal equalprg=python\ c:\\Python27\\Scripts\\js-beautify\ --indent-size=2\ -X\ --stdin
-augroup END
-
-" FileType: Typescript
-augroup filetype_typescript
-    autocmd!
-    autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 expandtab
-    autocmd FileType typescript setlocal equalprg=python\ c:\\Python27\\Scripts\\js-beautify\ --indent-size=2\ -X\ --stdin
-augroup END
-
-" FileType: Ruby
-augroup filetype_ruby
-    autocmd!
-    autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-augroup END
-
-" Filetype: RC
-augroup filetype_rc
-    autocmd!
-    autocmd FileType rc setlocal textwidth=0 noautoindent
-augroup END
-
-" Filetype: Jenkinsfile
-augroup filetype_Jenkinsfile
-    autocmd!
-    autocmd BufNewFile,BufRead * if expand('%') == 'Jenkinsfile' | set ft=groovy | endif
-augroup END
-
-" Filetype: groovy
-augroup filetype_groovy
-    autocmd!
-    autocmd FileType groovy setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-augroup END
-
-augroup vimrc_note
-    autocmd!
-    autocmd Syntax * syn match MyTodo /\v<(NOTE)/ containedin=.*Comment.*,vimCommentTitle
-augroup END
-hi def link MyTodo Todo
