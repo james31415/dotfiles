@@ -43,6 +43,9 @@ set nowrap
 
 set shiftround
 
+set errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %trror\ -\ %m
+set errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %tarning\ -\ %m
+
 if has("multi_byte")
     if &termencoding == ""
         let &termencoding = &encoding
@@ -102,9 +105,9 @@ set wmh=0
 nnoremap <Leader>m <C-W>=
 nnoremap <Leader>M <C-W>_
 
-" " Quickfix and location windows
-" nnoremap <silent> ]n :cn<cr>
-" nnoremap <silent> [n :cp<cr>
-" nnoremap <silent> ]l :lne<cr>
-" nnoremap <silent> [l :lp<cr>
+" Quickfix and location windows
+nnoremap <silent> ]n :cn<cr>
+nnoremap <silent> [n :cp<cr>
+nnoremap <silent> ]l :lne<cr>
+nnoremap <silent> [l :lp<cr>
 
