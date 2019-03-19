@@ -80,6 +80,15 @@ set shiftwidth=2
 let g:netrw_banner=0
 let g:netrw_hide=1
 
+let s:dotfiles = '\(^\|\s\s\)\zs\.\S\+'
+let s:escape = 'substitute(escape(v:val, ".$~"), "*", ".*", "g")'
+let g:netrw_list_hide=
+		\ netrw_gitignore#Hide() .
+		\ join(map(split(&wildignore, ','), '"^".' . s:escape . '. "/\\=$"'), ',') .
+		\ ',^\.\.\=/\=$' .
+		\ (get(g:, 'netrw_list_hide', '')[-strlen(s:dotfiles)-1:-1] ==# s:dotfiles ? ','.s:dotfiles : '')
+
+
 " Mapping defined below
 " Mappings
 let mapleader=","
