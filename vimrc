@@ -96,7 +96,10 @@ let mapleader=","
 nnoremap <silent> <Leader>cd :cd %:p:h<cr>
 
 " Special Files
-nnoremap <Leader>ev :next $MYVIMRC<cr>
+nnoremap <Leader>en :vsplit notes.txt<cr>
+nnoremap <Leader>eN :vsplit $HOME/notes.txt<cr>
+
+nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <Leader>sv :source $MYVIMRC<cr>
 
 " Splits
