@@ -35,7 +35,15 @@ endif
 
 set grepprg=rg\ --vimgrep
 
+set path=.,**
+set wildmenu
 set wildmode=list:longest,full
+
+set wildignore+=node_modules/
+set wildignore+=.git/
+
+set wildignore+=*.o
+set wildignore+=*.a
 
 set noshowmode
 
@@ -69,8 +77,10 @@ set backspace=indent,eol,start
 set tabstop=2
 set shiftwidth=2
 
-" Mapping defined below
+let g:netrw_banner=0
+let g:netrw_hide=1
 
+" Mapping defined below
 " Mappings
 let mapleader=","
 
