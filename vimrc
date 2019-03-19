@@ -39,8 +39,8 @@ set path=.,**
 set wildmenu
 set wildmode=list:longest,full
 
-set wildignore+=node_modules/
-set wildignore+=.git/
+set wildignore+=**/node_modules/**
+set wildignore+=**/.git/**
 
 set wildignore+=*.o
 set wildignore+=*.a
