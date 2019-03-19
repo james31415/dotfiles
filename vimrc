@@ -23,6 +23,7 @@ if has("gui_running")
     endif
 endif
 
+set autoread
 set noswapfile
 set nobackup
 
