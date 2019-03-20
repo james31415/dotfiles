@@ -94,7 +94,9 @@ let g:netrw_list_hide=
 " Mappings
 let mapleader=","
 
+inoremap <c-u> <esc>mzgUiw`za
 nnoremap <silent> <Leader>cd :cd %:p:h<cr>
+nnoremap <Leader>el :e <c-r>=expand("%:p:h")<cr>\
 
 " Special Files
 nnoremap <Leader>en :vsplit notes.txt<cr>
