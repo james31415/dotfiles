@@ -99,6 +99,7 @@ nnoremap <silent> <Leader>cd :cd %:p:h<cr>
 nnoremap <Leader>el :e <c-r>=expand("%:p:h")<cr>\
 
 " Special Files
+nnoremap <Leader>eb :vsplit bookmarks.txt<cr>
 nnoremap <Leader>en :vsplit notes.txt<cr>
 nnoremap <Leader>eN :vsplit $HOME/notes.txt<cr>
 
