@@ -95,11 +95,13 @@ let g:netrw_list_hide=
 let mapleader=","
 
 inoremap <c-u> <esc>mzgUiw`za
+
+nnoremap <Leader>p :pu +<cr>
 nnoremap <silent> <Leader>cd :cd %:p:h<cr>
 nnoremap <Leader>el :e <c-r>=expand("%:p:h")<cr>\
 
 " Special Files
-nnoremap <Leader>eb :vsplit bookmarks.txt<cr>
+nnoremap <Leader>eb :vsplit $HOME/bookmarks.txt<cr>
 nnoremap <Leader>en :vsplit notes.txt<cr>
 nnoremap <Leader>eN :vsplit $HOME/notes.txt<cr>
 
