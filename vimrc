@@ -96,6 +96,8 @@ let mapleader=","
 
 inoremap <c-u> <esc>mzgUiw`za
 
+nnoremap <Leader>o :only<cr>
+
 nnoremap <Leader>p :pu +<cr>
 nnoremap <Leader>P mz$viW"+y`z
 nnoremap <silent> <Leader>cd :cd %:p:h<cr>
