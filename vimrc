@@ -1,8 +1,8 @@
 " Startup
 if has('vim_starting')
-    if &compatible
-        set nocompatible
-    endif
+	if &compatible
+		set nocompatible
+	endif
 endif
 
 filetype off
@@ -16,22 +16,28 @@ set guioptions-=T
 set guioptions-=m
 
 if has("gui_running")
-    if has('win32')
-        set guifont=DejaVu_Sans_Mono:h10:cANSI
-    else
-        set guifont=DejaVu\ Sans\ Mono\ 10
-    endif
+	if has('win32')
+		set guifont=DejaVu_Sans_Mono:h10:cANSI
+	else
+		set guifont=DejaVu\ Sans\ Mono\ 10
+	endif
 endif
 
 set autoread
 set noswapfile
 set nobackup
 
+set number
+
 " Platform specifics
 if has('win32')
-    set makeprg=build.bat
+	set makeprg=build.bat
+
+	set errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %trror\ -\ %m
+	set errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %tarning\ -\ %m
+	set errorformat+=\ %#%f(%l\\\,%c):\ %m
 else
-    set makeprg=./build.sh
+	set makeprg=./build.sh
 endif
 
 set grepprg=rg\ --vimgrep
@@ -52,20 +58,17 @@ set nowrap
 
 set shiftround
 
-set errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %trror\ -\ %m
-set errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %tarning\ -\ %m
-
 if has("multi_byte")
-    if &termencoding == ""
-        let &termencoding = &encoding
-    endif
-    set encoding=utf-8
-    setglobal fileencoding=utf-8
-    set fileencodings=ucs-bom,utf-8,latin1
+	if &termencoding == ""
+		let &termencoding = &encoding
+	endif
+	set encoding=utf-8
+	setglobal fileencoding=utf-8
+	set fileencodings=ucs-bom,utf-8,latin1
 endif
 
 if &encoding ==# 'latin1' && has('gui_running')
-    set encoding=utf-8
+	set encoding=utf-8
 endif
 
 " Tabs
@@ -84,10 +87,10 @@ let g:netrw_hide=1
 let s:dotfiles = '\(^\|\s\s\)\zs\.\S\+'
 let s:escape = 'substitute(escape(v:val, ".$~"), "*", ".*", "g")'
 let g:netrw_list_hide=
-		\ netrw_gitignore#Hide() .
-		\ join(map(split(&wildignore, ','), '"^".' . s:escape . '. "/\\=$"'), ',') .
-		\ ',^\.\.\=/\=$' .
-		\ (get(g:, 'netrw_list_hide', '')[-strlen(s:dotfiles)-1:-1] ==# s:dotfiles ? ','.s:dotfiles : '')
+	\ netrw_gitignore#Hide() .
+	\ join(map(split(&wildignore, ','), '"^".' . s:escape . '. "/\\=$"'), ',') .
+	\ ',^\.\.\=/\=$' .
+	\ (get(g:, 'netrw_list_hide', '')[-strlen(s:dotfiles)-1:-1] ==# s:dotfiles ? ','.s:dotfiles : '')
 
 
 " Mapping defined below
