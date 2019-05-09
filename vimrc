@@ -32,10 +32,6 @@ set number
 " Platform specifics
 if has('win32')
 	set makeprg=build.bat
-
-	set errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %trror\ -\ %m
-	set errorformat+=%f:\ line\ %l\\,\ col\ %c\\,\ %tarning\ -\ %m
-	set errorformat+=\ %#%f(%l\\\,%c):\ %m
 else
 	set makeprg=./build.sh
 endif
