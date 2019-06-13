@@ -8,6 +8,7 @@ endif
 filetype off
 syntax off
 set nohlsearch
+nnoremap / /\v
 set t_Co=0
 
 " Graphical settings
@@ -32,6 +33,9 @@ set number
 " Platform specifics
 if has('win32')
 	set makeprg=build.bat
+
+	set errorformat+=%f(%l\\,%c):\ error\ %t%n:\ %m
+	set errorformat+=%f(%l\\,%c):\ warning\ %t%n:\ %m
 else
 	set makeprg=./build.sh
 endif
