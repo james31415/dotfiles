@@ -107,8 +107,8 @@ nnoremap <Leader>el :e <c-r>=expand("%:p:h")<cr>\
 
 " Special Files
 nnoremap <Leader>eb :vsplit $HOME/docs/bookmarks.txt<cr>
-nnoremap <Leader>en :vsplit notes.txt<cr>
-nnoremap <Leader>eN :vsplit $HOME/docs/notes.txt<cr>
+nnoremap <Leader>en :vsplit $HOME/docs/notes.txt<cr>
+nnoremap <Leader>ep :vsplit $HOME/docs/projects.txt<cr>
 
 nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <Leader>sv :source $MYVIMRC<cr>
