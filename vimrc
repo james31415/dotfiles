@@ -149,6 +149,7 @@ nnoremap <silent> ]l :lne<cr>
 nnoremap <silent> [l :lp<cr>
 
 " Function keys
+nnoremap <silent> <F9> :set list!<cr>
 nnoremap <silent> <F5> :e<cr>
 nnoremap <silent> <C-F5> :e<cr>G
 
