@@ -129,6 +129,7 @@ nnoremap <Leader>ewp :vsplit $HOME/docs/work/projects.txt<cr>
 
 nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <Leader>sv :source $MYVIMRC<cr>
+command! MakeTags !ctags --tag-relative --fields=+l -R . && sed -i"" -r -e "/^(if|switch|function|module\.exports|it|describe)	.+language:js$/d" tags
 
 " Splits
 command! -nargs=? -complete=file El :lefta :vnew <args>
