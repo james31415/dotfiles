@@ -3,7 +3,7 @@ if [ -z "$STY" ] && [ -n "$SSH_TTY" ]; then
 fi
 
 export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="clean"
+ZSH_THEME="jreese"
 plugins=(catimg screen vi-mode)
 
 source $ZSH/oh-my-zsh.sh
