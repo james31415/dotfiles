@@ -166,5 +166,6 @@ nnoremap <silent> [l :lp<cr>
 nnoremap <silent> <F5> :e<cr>
 nnoremap <silent> <C-F5> :e<cr>G
 
+nnoremap <silent> <F7> :set hls!<cr>
 nnoremap <silent> <F8> :set expandtab!<cr>
 nnoremap <silent> <F9> :set list!<cr>
