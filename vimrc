@@ -1,24 +1,16 @@
 " Startup
 if has('vim_starting')
-  if &compatible
-    set nocompatible
-  endif
+	if &compatible
+		set nocompatible
+	endif
 endif
 
 filetype off
 syntax off
 set nohlsearch
 
-function! TabOrSpace()
-  if &expandtab
-    return '[SPACE]'
-  else
-    return '[TAB]'
-  endif
-endfunction
-
 set laststatus=2
-set statusline=%<[%n]\ %f\ %y%h%m%r\ %{TabOrSpace()}\ %=%-14.(%l,%c%V%)\ %P
+set statusline=%<[%n]\ %f\ %y%h%m%r\ %=%-14.(%l,%c%V%)\ %P
 
 nnoremap / /\v
 set t_Co=0
@@ -29,11 +21,11 @@ set guioptions-=T
 set guioptions-=m
 
 if has("gui_running")
-  if has('win32')
-    set guifont=DejaVu_Sans_Mono:h10:cANSI
-  else
-    set guifont=DejaVu\ Sans\ Mono\ 10
-  endif
+	if has('win32')
+		set guifont=DejaVu_Sans_Mono:h10:cANSI
+	else
+		set guifont=DejaVu\ Sans\ Mono\ 10
+	endif
 endif
 
 set autoread
@@ -44,12 +36,12 @@ set number
 
 " Platform specifics
 if has('win32')
-  set makeprg=build.bat
+	set makeprg=build.bat
 
-  set errorformat+=%f(%l\\,%c):\ error\ %t%n:\ %m
-  set errorformat+=%f(%l\\,%c):\ warning\ %t%n:\ %m
+	set errorformat+=%f(%l\\,%c):\ error\ %t%n:\ %m
+	set errorformat+=%f(%l\\,%c):\ warning\ %t%n:\ %m
 else
-  set makeprg=./build.sh
+	set makeprg=./build.sh
 endif
 
 set grepprg=rg\ --vimgrep
@@ -71,25 +63,23 @@ set nowrap
 set shiftround
 
 if has("multi_byte")
-  if &termencoding == ""
-    let &termencoding = &encoding
-  endif
-  set encoding=utf-8
-  setglobal fileencoding=utf-8
-  set fileencodings=ucs-bom,utf-8,latin1
+	if &termencoding == ""
+		let &termencoding = &encoding
+	endif
+	set encoding=utf-8
+	setglobal fileencoding=utf-8
+	set fileencodings=ucs-bom,utf-8,latin1
 endif
 
 if &encoding ==# 'latin1' && has('gui_running')
-  set encoding=utf-8
+	set encoding=utf-8
 endif
 
 " Tabs
 " Copy previous indent
 set autoindent
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
+set tabstop=4
+set shiftwidth=4
 
 " Backspace behavior
 set backspace=indent,eol,start
@@ -100,9 +90,9 @@ let g:netrw_hide=1
 let s:dotfiles = '\(^\|\s\s\)\zs\.\S\+'
 let s:escape = 'substitute(escape(v:val, ".$~"), "*", ".*", "g")'
 let g:netrw_list_hide=
-  \ join(map(split(&wildignore, ','), '"^".' . s:escape . '. "/\\=$"'), ',') .
-  \ ',^\.\.\=/\=$' .
-  \ (get(g:, 'netrw_list_hide', '')[-strlen(s:dotfiles)-1:-1] ==# s:dotfiles ? ','.s:dotfiles : '')
+	\ join(map(split(&wildignore, ','), '"^".' . s:escape . '. "/\\=$"'), ',') .
+	\ ',^\.\.\=/\=$' .
+	\ (get(g:, 'netrw_list_hide', '')[-strlen(s:dotfiles)-1:-1] ==# s:dotfiles ? ','.s:dotfiles : '')
 
 
 " Mapping defined below
@@ -167,5 +157,3 @@ nnoremap <silent> <F5> :e<cr>
 nnoremap <silent> <C-F5> :e<cr>G
 
 nnoremap <silent> <F7> :set hls!<cr>
-nnoremap <silent> <F8> :set expandtab!<cr>
-nnoremap <silent> <F9> :set list!<cr>
