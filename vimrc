@@ -5,6 +5,10 @@ if has('vim_starting')
 	endif
 endif
 
+if filereadable($HOME . "/.vimrc.loc")
+	source $HOME/.vimrc.loc
+endif
+
 filetype off
 syntax off
 set nohlsearch
