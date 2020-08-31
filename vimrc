@@ -5,10 +5,6 @@ if has('vim_starting')
 	endif
 endif
 
-if filereadable($HOME . "/.vimrc.loc")
-	source $HOME/.vimrc.loc
-endif
-
 filetype off
 syntax off
 set nohlsearch
@@ -161,3 +157,7 @@ nnoremap <silent> <F5> :e<cr>
 nnoremap <silent> <C-F5> :e<cr>G
 
 nnoremap <silent> <F7> :set hls!<cr>
+
+if filereadable($HOME . "/.vimrc.loc")
+	source $HOME/.vimrc.loc
+endif
