@@ -1,10 +1,4 @@
 " Startup
-if has('vim_starting')
-	if &compatible
-		set nocompatible
-	endif
-endif
-
 filetype off
 syntax off
 set nohlsearch
