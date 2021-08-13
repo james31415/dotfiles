@@ -11,6 +11,8 @@ nnoremap / /\v
 set t_Co=0
 
 " Graphical settings
+color slate
+
 set ruler
 set guioptions-=T
 set guioptions-=m
