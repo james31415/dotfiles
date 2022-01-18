@@ -30,6 +30,7 @@ endif
 set autoread
 set noswapfile
 set nobackup
+set undofile
 
 set number
 
@@ -37,10 +38,14 @@ set number
 if has('win32')
 	set makeprg=build.bat
 
+	set undodir=$HOME/vimfiles/undo
+
 	set errorformat+=%f(%l\\,%c):\ error\ %t%n:\ %m
 	set errorformat+=%f(%l\\,%c):\ warning\ %t%n:\ %m
 else
 	set makeprg=./build.sh
+
+	set undodir=$HOME/.vim/undo
 endif
 
 set grepprg=rg\ --vimgrep
