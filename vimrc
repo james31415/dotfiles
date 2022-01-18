@@ -31,6 +31,7 @@ set autoread
 set noswapfile
 set nobackup
 set undofile
+set hidden
 
 set number
 
