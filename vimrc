@@ -3,6 +3,8 @@ filetype off
 syntax off
 set nohlsearch
 set colorcolumn=80,160
+set cursorline
+set relativenumber
 
 set laststatus=2
 set statusline=%<[%n]\ %f\ %y%h%m%r\ %=%-14.(%l,%c%V%)\ %P
