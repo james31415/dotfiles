@@ -126,6 +126,12 @@ nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <Leader>sv :source $MYVIMRC<cr>
 command! MakeTags !ctags --tag-relative --fields=+l -R . && sed -i"" -r -e "/^(if|switch|function|module\.exports|it|describe)	.+language:js$/d" tags
 
+" Header / Source
+nnoremap <Leader>oc :e %<.c<cr>
+nnoremap <Leader>oC :e %<.cpp<cr>
+nnoremap <Leader>oh :e %<.h<cr>
+nnoremap <Leader>oH :e %<.hpp<cr>
+
 " Splits
 command! -nargs=? -complete=file El :lefta :vnew <args>
 command! -nargs=? -complete=file Ed :bel :new <args>
